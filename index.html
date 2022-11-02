@@ -89,14 +89,15 @@
     </style>
 </head>
 <body>
+    <audio id="bgm" src="bgm.mp3" loop="loop"></audio>
     <div class="container">
         <h1 id="headline"></h1>
         <div id="rcountdown">
             <ul>
                 <li><span id="rdays"></span>days</li>
-                <li><span id="rhours"></span>Hours</li>
+                <!-- <li><span id="rhours"></span>Hours</li>
                 <li><span id="rminutes"></span>Minutes</li>
-                <li><span id="rseconds"></span>Seconds</li>
+                <li><span id="rseconds"></span>Seconds</li> -->
                 <li>(Release)</li>
             </ul>
         </div>
@@ -104,9 +105,9 @@
         <div id="fcountdown">
             <ul>
                 <li><span id="fdays"></span>days</li>
-                <li><span id="fhours"></span>Hours</li>
+                <!-- <li><span id="fhours"></span>Hours</li>
                 <li><span id="fminutes"></span>Minutes</li>
-                <li><span id="fseconds"></span>Seconds</li>
+                <li><span id="fseconds"></span>Seconds</li> -->
                 <li>(Flight)</li>
             </ul>
         </div>
@@ -114,9 +115,9 @@
         <div id="d1countdown">
             <ul>
                 <li><span id="d1days"></span>days</li>
-                <li><span id="d1hours"></span>Hours</li>
+                <!-- <li><span id="d1hours"></span>Hours</li>
                 <li><span id="d1minutes"></span>Minutes</li>
-                <li><span id="d1seconds"></span>Seconds</li>
+                <li><span id="d1seconds"></span>Seconds</li> -->
                 <li>(Day1)</li>
             </ul>
         </div>
@@ -259,6 +260,12 @@
                     //seconds
                 }, 0)
         }());
+    </script>
+
+    <script>
+    window.onload = function() {
+        document.getElementById("bgm").play();
+    }
     </script>
 </body>
 </html>
