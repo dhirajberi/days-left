@@ -89,7 +89,6 @@
     </style>
 </head>
 <body>
-    <audio id="bgm" src="bgm.mp3" loop="loop"></audio>
     <div class="container">
         <h1 id="headline"></h1>
         <div id="rcountdown">
@@ -98,7 +97,7 @@
                 <!-- <li><span id="rhours"></span>Hours</li>
                 <li><span id="rminutes"></span>Minutes</li>
                 <li><span id="rseconds"></span>Seconds</li> -->
-                <li>(Release)</li>
+                <li><span><img src="https://www.yudiz.com/wp-content/uploads/2019/12/logo-512.png" style="width: 1em;"></span>(Release)</li>
             </ul>
         </div>
 
@@ -108,7 +107,7 @@
                 <!-- <li><span id="fhours"></span>Hours</li>
                 <li><span id="fminutes"></span>Minutes</li>
                 <li><span id="fseconds"></span>Seconds</li> -->
-                <li>(Flight)</li>
+                <li><span><img src="https://cdn-icons-png.flaticon.com/512/3125/3125713.png" style="width: 1em;"></span>(Flight)</li>
             </ul>
         </div>
 
@@ -118,7 +117,7 @@
                 <!-- <li><span id="d1hours"></span>Hours</li>
                 <li><span id="d1minutes"></span>Minutes</li>
                 <li><span id="d1seconds"></span>Seconds</li> -->
-                <li>(Day1)</li>
+                <li><span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Amazon_icon.svg/2500px-Amazon_icon.svg.png" style="width: 1em;"></span>(Day1)</li>
             </ul>
         </div>
 
@@ -135,8 +134,6 @@
                 hour = minute * 60,
                 day = hour * 24;
 
-            //I'm adding this section so I don't have to keep updating this pen every year :-)
-            //remove this if you don't need it
             let today = new Date(),
                 dd = String(today.getDate()).padStart(2, "0"),
                 mm = String(today.getMonth() + 1).padStart(2, "0"),
@@ -157,10 +154,10 @@
                     const now = new Date().getTime(),
                         distance = countDown - now;
 
-                    document.getElementById("rdays").innerText = Math.floor(distance / (day)),
-                        document.getElementById("rhours").innerText = Math.floor((distance % (day)) / (hour)),
-                        document.getElementById("rminutes").innerText = Math.floor((distance % (hour)) / (minute)),
-                        document.getElementById("rseconds").innerText = Math.floor((distance % (minute)) / second);
+                    document.getElementById("rdays").innerText = Math.floor(distance / (day));
+                    // document.getElementById("rhours").innerText = Math.floor((distance % (day)) / (hour)),
+                    // document.getElementById("rminutes").innerText = Math.floor((distance % (hour)) / (minute)),
+                    // document.getElementById("rseconds").innerText = Math.floor((distance % (minute)) / second);
 
                     //do something later when date is reached
                     if (distance < 0) {
@@ -179,8 +176,6 @@
                 hour = minute * 60,
                 day = hour * 24;
 
-            //I'm adding this section so I don't have to keep updating this pen every year :-)
-            //remove this if you don't need it
             let today = new Date(),
                 dd = String(today.getDate()).padStart(2, "0"),
                 mm = String(today.getMonth() + 1).padStart(2, "0"),
@@ -201,10 +196,10 @@
                     const now = new Date().getTime(),
                         distance = countDown - now;
 
-                    document.getElementById("fdays").innerText = Math.floor(distance / (day)),
-                        document.getElementById("fhours").innerText = Math.floor((distance % (day)) / (hour)),
-                        document.getElementById("fminutes").innerText = Math.floor((distance % (hour)) / (minute)),
-                        document.getElementById("fseconds").innerText = Math.floor((distance % (minute)) / second);
+                    document.getElementById("fdays").innerText = Math.floor(distance / (day));
+                    // document.getElementById("fhours").innerText = Math.floor((distance % (day)) / (hour)),
+                    // document.getElementById("fminutes").innerText = Math.floor((distance % (hour)) / (minute)),
+                    // document.getElementById("fseconds").innerText = Math.floor((distance % (minute)) / second);
 
                     //do something later when date is reached
                     if (distance < 0) {
@@ -223,8 +218,6 @@
                 hour = minute * 60,
                 day = hour * 24;
 
-            //I'm adding this section so I don't have to keep updating this pen every year :-)
-            //remove this if you don't need it
             let today = new Date(),
                 dd = String(today.getDate()).padStart(2, "0"),
                 mm = String(today.getMonth() + 1).padStart(2, "0"),
@@ -245,10 +238,10 @@
                     const now = new Date().getTime(),
                         distance = countDown - now;
 
-                    document.getElementById("d1days").innerText = Math.floor(distance / (day)),
-                        document.getElementById("d1hours").innerText = Math.floor((distance % (day)) / (hour)),
-                        document.getElementById("d1minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-                        document.getElementById("d1seconds").innerText = Math.floor((distance % (minute)) / second);
+                    document.getElementById("d1days").innerText = Math.floor(distance / (day));
+                    // document.getElementById("d1hours").innerText = Math.floor((distance % (day)) / (hour)),
+                    // document.getElementById("d1minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+                    // document.getElementById("d1seconds").innerText = Math.floor((distance % (minute)) / second);
 
                     //do something later when date is reached
                     if (distance < 0) {
@@ -262,10 +255,13 @@
         }());
     </script>
 
+    <!-- background audio -->
+    <audio id="bgm" src="bgm.mp3" loop="loop"></audio>
     <script>
     window.onload = function() {
         document.getElementById("bgm").play();
     }
     </script>
+    
 </body>
 </html>
