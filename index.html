@@ -5,88 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Days Left</title>
-    <style>
-        /* general styling */
-        :root {
-            --smaller: .75;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-        }
-
-        body {
-            align-items: center;
-            background-color: #ffd54f;
-            display: flex;
-            font-family: -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Roboto,
-                Oxygen-Sans,
-                Ubuntu,
-                Cantarell,
-                "Helvetica Neue",
-                sans-serif;
-        }
-
-        .container {
-            color: #333;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        h1 {
-            font-weight: normal;
-            letter-spacing: .125rem;
-            text-transform: uppercase;
-        }
-
-        li {
-            display: inline-block;
-            font-size: 1.5em;
-            list-style-type: none;
-            padding: 1em;
-            text-transform: uppercase;
-        }
-
-        li span {
-            display: block;
-            font-size: 4.5rem;
-        }
-
-        .emoji {
-            display: none;
-            padding: 1rem;
-        }
-
-        .emoji span {
-            font-size: 4rem;
-            padding: 0 .5rem;
-        }
-
-        @media all and (max-width: 768px) {
-            h1 {
-                font-size: calc(1.5rem * var(--smaller));
-            }
-
-            li {
-                font-size: calc(1.125rem * var(--smaller));
-            }
-
-            li span {
-                font-size: calc(3.375rem * var(--smaller));
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
@@ -94,19 +13,20 @@
         <div id="rcountdown">
             <ul>
                 <li><span id="rdays"></span>days</li>
-                <!-- <li><span id="rhours"></span>Hours</li>
-                <li><span id="rminutes"></span>Minutes</li>
-                <li><span id="rseconds"></span>Seconds</li> -->
-                <li><span><img src="https://www.yudiz.com/wp-content/uploads/2019/12/logo-512.png" style="width: 1em;"></span>(Release)</li>
+                <li><span><img src="" style="width: 1em;"></span>(Total)</li>
+            </ul>
+        </div>
+
+        <div id="wcountdown">
+            <ul>
+                <li><span id="wdays"></span>days</li>
+                <li><span><img src="" style="width: 1em;"></span>(Working)</li>
             </ul>
         </div>
 
         <div id="fcountdown">
             <ul>
                 <li><span id="fdays"></span>days</li>
-                <!-- <li><span id="fhours"></span>Hours</li>
-                <li><span id="fminutes"></span>Minutes</li>
-                <li><span id="fseconds"></span>Seconds</li> -->
                 <li><span><img src="https://cdn-icons-png.flaticon.com/512/3125/3125713.png" style="width: 1em;"></span>(Flight)</li>
             </ul>
         </div>
@@ -114,9 +34,6 @@
         <div id="d1countdown">
             <ul>
                 <li><span id="d1days"></span>days</li>
-                <!-- <li><span id="d1hours"></span>Hours</li>
-                <li><span id="d1minutes"></span>Minutes</li>
-                <li><span id="d1seconds"></span>Seconds</li> -->
                 <li><span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Amazon_icon.svg/2500px-Amazon_icon.svg.png" style="width: 1em;"></span>(Day1)</li>
             </ul>
         </div>
@@ -155,9 +72,6 @@
                         distance = countDown - now;
 
                     document.getElementById("rdays").innerText = Math.floor(distance / (day));
-                    // document.getElementById("rhours").innerText = Math.floor((distance % (day)) / (hour)),
-                    // document.getElementById("rminutes").innerText = Math.floor((distance % (hour)) / (minute)),
-                    // document.getElementById("rseconds").innerText = Math.floor((distance % (minute)) / second);
 
                     //do something later when date is reached
                     if (distance < 0) {
@@ -197,9 +111,6 @@
                         distance = countDown - now;
 
                     document.getElementById("fdays").innerText = Math.floor(distance / (day));
-                    // document.getElementById("fhours").innerText = Math.floor((distance % (day)) / (hour)),
-                    // document.getElementById("fminutes").innerText = Math.floor((distance % (hour)) / (minute)),
-                    // document.getElementById("fseconds").innerText = Math.floor((distance % (minute)) / second);
 
                     //do something later when date is reached
                     if (distance < 0) {
@@ -239,9 +150,6 @@
                         distance = countDown - now;
 
                     document.getElementById("d1days").innerText = Math.floor(distance / (day));
-                    // document.getElementById("d1hours").innerText = Math.floor((distance % (day)) / (hour)),
-                    // document.getElementById("d1minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-                    // document.getElementById("d1seconds").innerText = Math.floor((distance % (minute)) / second);
 
                     //do something later when date is reached
                     if (distance < 0) {
@@ -255,12 +163,22 @@
         }());
     </script>
 
+    <!-- working days -->
+    <script>
+        const wDays = async () => {
+            const response = await fetch('https://flask-real-ps.herokuapp.com/working-days');
+            const myJson = await response.json(); //extract JSON from the http response
+            document.getElementById("wdays").innerText = myJson['date'];
+        }
+    </script>
+
     <!-- background audio -->
     <audio id="bgm" src="bgm.mp3" loop="loop"></audio>
     <script>
     window.onload = function() {
         document.getElementById("bgm").play();
-    }
+        wDays();
+    };
     </script>
     
 </body>
